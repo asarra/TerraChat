@@ -9,3 +9,6 @@ The structure is like this:\
 De.TerraChat.Base (Interfaces, etc.) -> Every team had to implement their respective parts from this.\
 De.TerraChat.Vitali (SQL handling logic) -> AndisAPIServer (API between SQL handler and Chat proxy)\
 AndisAPIServer <- De.TerraChat.ChrisLu (Chat proxy for Front End) <- GiMeToMVCWeb (Web client) OR TiTiMvcWEB (2nd team with another web client) OR DarnielsWPFClient (WPF client)
+
+We all had a time window of about 3 hours to finish this project.\
+Therefore mistakes are most likely going to be visible here and there.
