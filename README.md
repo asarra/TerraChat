@@ -12,3 +12,8 @@ AndisAPIServer <- De.TerraChat.ChrisLu (Chat proxy for Front End) <- GiMeToMVCWe
 
 We all had a time window of about 3 hours to finish this project.\
 Therefore mistakes are most likely going to be visible here and there.
+
+Here is how our team's part looks like. A demo.:
+
+![welcoming_page](https://user-images.githubusercontent.com/20255127/171928950-5184d5c9-c6f9-4bf6-8c4b-df56390ec3e0.png)
+![chatfenster](https://user-images.githubusercontent.com/20255127/171928958-0d84dd91-0c76-43b0-8904-19c728c2e7a5.png)
