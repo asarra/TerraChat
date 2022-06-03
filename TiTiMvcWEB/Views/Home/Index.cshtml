@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1 class="h1">Login</h1>
+<form asp-action="Login" method="post">
+        <label>Nutzername</label> <br />
+        <input type="text" class="input-group-text" name="un" maxlength="50"/><br />
+        <label>Passwort</label> <br />
+        <input type="password" class="input-group-text" name="pwd" maxlength="50" /><br /><br />
+        <input type="submit" value="Login" class="btn btn-success" />
+</form>
+<label>@Model</label>
+

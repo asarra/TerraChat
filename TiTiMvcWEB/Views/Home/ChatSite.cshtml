@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewData["Title"] = "ChatSite";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="width:100%; height:80%; overflow:auto;">
+    <table>
+        <tbody>
+            @foreach (var message in ViewBag.Messages)
+            {
+                <tr>
+                    <td><span style="color:darkmagenta">@message.User.Name</span>  <br /> @message.Text <br /> <span style="color:gray">@message.DateCre</span></td>
+                </tr>
+                <tr></tr>
+            }
+        </tbody>
+    </table>
+</div>
+    <form asp-action="Send" method="post">
+        <input type="text" name="eingabe" maxlength="500" class="input-group-text" style="float:left; width:90%"/>
+        <input type="submit" value="Senden" class="btn btn-success" style="float:right" />         
+    </form>
+

@@ -1,0 +1,112 @@
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+
+#nullable disable
+
+namespace De.TerraChat.Base.Models
+{
+    public partial class CHAT_DBContext : DbContext
+    {
+        public CHAT_DBContext()
+        {
+        }
+
+        public CHAT_DBContext(DbContextOptions<CHAT_DBContext> options)
+            : base(options)
+        {
+        }
+
+        public virtual DbSet<Attatchment> Attatchments { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Data Source=172.26.6.44;Initial Catalog=CHAT_DB;User Id=sa;pwd=sa;");
+            }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.HasAnnotation("Relational:Collation", "Latin1_General_CI_AS");
+
+            modelBuilder.Entity<Attatchment>(entity =>
+            {
+                entity.ToTable("ATTATCHMENT");
+
+                entity.Property(e => e.Id)
+                    .ValueGeneratedNever()
+                    .HasColumnName("id");
+
+                entity.Property(e => e.Content)
+                    .IsRequired()
+                    .HasColumnType("image")
+                    .HasColumnName("content");
+
+                entity.Property(e => e.MimeType)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("mime_type");
+            });
+
+            modelBuilder.Entity<Message>(entity =>
+            {
+                entity.ToTable("MESSAGE");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.AttatchmentId).HasColumnName("attatchment_id");
+
+                entity.Property(e => e.DateCre)
+                    .HasColumnType("datetime")
+                    .HasColumnName("date_cre");
+
+                entity.Property(e => e.Text)
+                    .IsRequired()
+                    .HasMaxLength(500)
+                    .HasColumnName("text");
+
+                entity.Property(e => e.UserId).HasColumnName("user_id");
+
+                entity.HasOne(d => d.Attatchment)
+                    .WithMany(p => p.Messages)
+                    .HasForeignKey(d => d.AttatchmentId)
+                    .HasConstraintName("FK_MESSAGE_ATTATCHMENT");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Messages)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_MESSAGE_USER");
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.ToTable("USER");
+
+                entity.Property(e => e.Id)
+                    .ValueGeneratedNever()
+                    .HasColumnName("id");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("name");
+
+                entity.Property(e => e.Pwd)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("pwd");
+            });
+
+            OnModelCreatingPartial(modelBuilder);
+        }
+
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+    }
+}

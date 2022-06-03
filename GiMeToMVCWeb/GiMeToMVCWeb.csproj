@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\De.TerraChat.Base\De.TerraChat.Base.csproj" />
+    <ProjectReference Include="..\De.TerraChat.ChrisLu\De.TerraChat.ChrisLu.csproj" />
+  </ItemGroup>
+
+</Project>

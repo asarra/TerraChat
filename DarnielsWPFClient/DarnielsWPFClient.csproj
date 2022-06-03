@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\De.TerraChat.Base\De.TerraChat.Base.csproj" />
+    <ProjectReference Include="..\De.TerraChat.ChrisLu\De.TerraChat.ChrisLu.csproj" />
+  </ItemGroup>
+
+</Project>

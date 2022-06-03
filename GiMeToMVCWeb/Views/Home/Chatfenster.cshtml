@@ -1,0 +1,40 @@
+﻿@model De.TerraChat.Base.Models.Message[]
+@{
+    ViewData["Title"] = "Chatfenster";
+}
+
+<br />
+<br />
+<br />
+<br />
+<h1 style="font-weight:bolder">Chatfenster</h1>
+<br />
+<br />
+<br />
+<br />
+
+<div class="table " style="background-color:black">
+    <!--Angular setIntervall getMessages-->
+    <div style="height:30vh; overflow:scroll;">
+        <div id="nurMessages">
+
+        </div>
+
+        <br />
+        <br />
+
+    </div>
+
+    <form class="form text-center" asp-action="sendMessage" method="post">
+        <input style="" type="text" name="text" placeholder="Enter your message" />
+        <input type="submit" class="btn btn-success" value="Send" />
+        <input type="button" class="btn btn-light" name="options" value="..." />
+    </form>
+</div>
+<script>
+    setInterval(() => {
+        $.get("NurMessages", null, d => {
+            $("#nurMessages").html(d);
+        });
+    },5000);
+</script>

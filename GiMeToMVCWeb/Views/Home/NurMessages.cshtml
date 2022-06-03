@@ -1,0 +1,5 @@
+﻿@model De.TerraChat.Base.Models.Message[]
+@foreach (var m in Model)
+{
+    <p>@m.User.Name<br />>@m.Text</p>
+}
